@@ -118,12 +118,14 @@
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(245, 237, 228, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      background: rgba(245, 237, 228, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 14px 0;
+      padding: 10px 0;
+      box-shadow: 0 4px 18px rgba(58, 46, 40, 0.05);
+      transition: all 0.25s ease;
     }
     .navbar-inner {
       display: flex;
@@ -168,27 +170,72 @@
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
-    .nav-phone-btn {
+    .nav-icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: var(--text-heading);
+      justify-content: center;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      padding: 8px 14px;
-      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-full);
-      box-shadow: 0 2px 8px rgba(58, 46, 40, 0.05);
-      transition: all 0.2s ease;
+      background: var(--bg-card);
+      color: var(--text-heading);
+      box-shadow: 0 2px 6px rgba(58, 46, 40, 0.05);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      cursor: pointer;
     }
-    .nav-phone-btn:hover {
+    .nav-icon-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(58, 46, 40, 0.1);
+    }
+    .nav-icon-btn svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.2s ease;
+    }
+    .nav-icon-btn:hover svg {
+      transform: scale(1.1);
+    }
+    /* Phone Icon Button */
+    .nav-btn-phone {
+      color: var(--color-secondary-dark);
+      border-color: rgba(176, 137, 104, 0.3);
+    }
+    .nav-btn-phone:hover {
       background: #ffffff;
       border-color: var(--color-secondary);
-      color: var(--color-accent-dark);
+      color: var(--color-secondary);
+    }
+    /* WhatsApp Icon Button */
+    .nav-btn-whatsapp {
+      background: rgba(232, 131, 122, 0.12);
+      border-color: rgba(232, 131, 122, 0.35);
+      color: var(--color-accent);
+    }
+    .nav-btn-whatsapp:hover {
+      background: var(--color-accent);
+      color: #ffffff;
+      border-color: var(--color-accent);
+      box-shadow: 0 6px 16px var(--color-accent-glow);
+    }
+    .nav-btn-whatsapp svg {
+      fill: currentColor;
+    }
+    /* Contact Me Icon Button (Scrolls to Form) */
+    .nav-btn-contact {
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #9C7252 100%);
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(176, 137, 104, 0.3);
+    }
+    .nav-btn-contact:hover {
+      background: linear-gradient(135deg, #C49A76 0%, #9C7252 100%);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(176, 137, 104, 0.4);
     }
 
     /* Buttons */
@@ -294,12 +341,148 @@
       border-radius: 50%;
       animation: pulse-ring 2s infinite;
     }
-    .hero-heading {
-      font-size: 2.2rem;
+    /* Hero Professional 3-Line Heading Glassmorphism Card */
+    .hero-heading-card {
+      width: 100%;
+      background: rgba(250, 246, 240, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(176, 137, 104, 0.3);
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 16px 36px -10px rgba(58, 46, 40, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+      animation: heroCardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .hero-heading-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px -8px rgba(58, 46, 40, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.95) inset;
+      border-color: rgba(232, 131, 122, 0.45);
+    }
+    .hero-heading-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+      animation: shimmerHeader 4.5s ease-in-out infinite;
+    }
+    /* Line 1: עדן + Weight Icon */
+    .header-line-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 5px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(176, 137, 104, 0.25);
+      box-shadow: 0 2px 8px rgba(58, 46, 40, 0.04);
+    }
+    .header-brand-name {
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--color-secondary-dark);
+      letter-spacing: -0.01em;
+      line-height: 1;
+    }
+    .header-weight-icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #D86F66 100%);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px var(--color-accent-glow);
+      animation: weightBob 3.5s ease-in-out infinite;
+    }
+    .header-weight-icon {
+      width: 17px;
+      height: 17px;
+    }
+    /* Line 2: כשבא לך להתאמן */
+    .header-line-action {
+      margin: 0;
+      font-size: 2.1rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
       color: var(--text-heading);
-      line-height: 1.2;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      text-align: center;
+    }
+    /* Line 3: האימון בא אליך */
+    .header-line-solution {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2px;
+    }
+    .header-solution-pill {
+      display: inline-block;
+      padding: 7px 22px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, rgba(232, 131, 122, 0.16) 0%, rgba(216, 111, 102, 0.14) 100%);
+      border: 1px solid rgba(232, 131, 122, 0.45);
+      color: #B24339;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(232, 131, 122, 0.15);
+      animation: solutionPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes heroCardEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    @keyframes weightBob {
+      0%, 100% {
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        transform: scale(1.1) rotate(-6deg);
+      }
+    }
+    @keyframes shimmerHeader {
+      0%, 100% {
+        opacity: 0.35;
+        transform: scaleX(0.85);
+      }
+      50% {
+        opacity: 1;
+        transform: scaleX(1.15);
+      }
+    }
+    @keyframes solutionPulse {
+      0%, 100% {
+        box-shadow: 0 4px 16px rgba(232, 131, 122, 0.15);
+        border-color: rgba(232, 131, 122, 0.45);
+      }
+      50% {
+        box-shadow: 0 6px 22px rgba(232, 131, 122, 0.3);
+        border-color: rgba(232, 131, 122, 0.7);
+      }
+    }
+    .hero-heading {
+      display: none; /* Replaced by the 3-line glassmorphic hero-heading-card */
     }
     .hero-subheading {
       font-size: 1.12rem;
@@ -1299,8 +1482,27 @@
     }
 
     @media (min-width: 768px) {
-      .hero-heading {
-        font-size: 2.8rem;
+      .hero-heading-card {
+        padding: 28px 32px;
+        gap: 14px;
+      }
+      .header-line-action {
+        font-size: 2.6rem;
+      }
+      .header-brand-name {
+        font-size: 1.8rem;
+      }
+      .header-weight-icon-badge {
+        width: 36px;
+        height: 36px;
+      }
+      .header-weight-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .header-solution-pill {
+        font-size: 1.7rem;
+        padding: 8px 28px;
       }
       .slogan-text {
         font-size: 2.1rem;
@@ -1354,18 +1556,37 @@
   <header class="navbar">
     <div class="container navbar-inner">
       <a href="#" class="navbar-brand" aria-label="עדן - כושר אישי">
-        <div class="brand-badge">ע</div>
+        <div class="brand-badge" title="עדן - כושר אישי">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+            <path d="M20.5 7h-1a1.5 1.5 0 0 0-1.5 1.5v1h-12v-1A1.5 1.5 0 0 0 4.5 7h-1A1.5 1.5 0 0 0 2 8.5v7A1.5 1.5 0 0 0 3.5 17h1a1.5 1.5 0 0 0 1.5-1.5v-1h12v1a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 20.5 7zm-15 8.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7zm15 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7z"/>
+          </svg>
+        </div>
         <div class="brand-text">
           <span class="brand-name">עדן</span>
           <span class="brand-sub">מאמנת כושר מוסמכת וינגייט</span>
         </div>
       </a>
       <div class="nav-actions">
-        <a href="tel:0525523009" class="nav-phone-btn" data-phone-link>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 1. חיוג טלפוני מהיר -->
+        <a href="tel:0525523009" class="nav-icon-btn nav-btn-phone" data-phone-link aria-label="חיוג מהיר לעדן" title="חיוג לעדן">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
           </svg>
-          <span data-phone-display>052-552-3009</span>
+        </a>
+
+        <!-- 2. וואטסאפ מהיר -->
+        <a href="https://wa.me/972525523009" target="_blank" rel="noopener noreferrer" class="nav-icon-btn nav-btn-whatsapp" data-whatsapp-link aria-label="שליחת הודעה בוואטסאפ לעדן" title="וואטסאפ לעדן">
+          <svg viewBox="0 0 24 24">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 7.43C8.94 7.43 8.68 7.5 8.44 7.74C8.2 7.97 7.55 8.58 7.55 9.87C7.55 11.16 8.49 12.4 8.62 12.57C8.75 12.75 10.43 15.48 13.1 16.5C15.33 17.35 15.78 17.19 16.26 17.14C16.74 17.1 17.8 16.5 18.02 15.86C18.24 15.22 18.24 14.67 18.17 14.56C18.11 14.45 17.94 14.39 17.68 14.26C17.43 14.13 16.2 13.52 15.97 13.44C15.74 13.35 15.58 13.31 15.41 13.56C15.24 13.81 14.77 14.39 14.63 14.56C14.49 14.73 14.34 14.75 14.09 14.62C13.84 14.5 12.8 14.15 11.56 13.05C10.6 12.2 9.95 11.14 9.82 10.92C9.7 10.7 9.81 10.58 9.94 10.45C10.05 10.34 10.19 10.15 10.32 10C10.45 9.85 10.49 9.74 10.58 9.57C10.66 9.4 10.62 9.25 10.56 9.13C10.5 9 10.01 7.79 9.8 7.29C9.6 6.8 9.4 6.86 9.24 6.85C9.09 6.85 8.94 6.85 8.79 6.85L9.11 7.43Z"/>
+          </svg>
+        </a>
+
+        <!-- 3. השארת פרטים (גלילה לטופס) -->
+        <a href="#contact-section" class="nav-icon-btn nav-btn-contact" aria-label="השאירו פרטים לקביעת אימון" title="השאירו פרטים">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
         </a>
       </div>
     </div>
@@ -1378,13 +1599,33 @@
     <div class="hero-ambient-glow"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badge">
+        <div class="hero-badge" style="align-self: center;">
           <span class="hero-badge-pulse"></span>
           <span>מוסמכת וינגייט • ניסיון קרבי בצה״ל</span>
         </div>
 
-        <!-- Heading (Exact Hebrew Text) -->
-        <h1 class="hero-heading">עדן - כשבא לך להתאמן, האימון בא אליך</h1>
+        <!-- Professional Glassmorphism 3-Line Heading Box -->
+        <div class="hero-heading-card">
+          <!-- Line 1: עדן + Weight / Dumbbell Icon -->
+          <div class="header-line-brand">
+            <span class="header-brand-name">עדן</span>
+            <span class="header-weight-icon-badge" title="כושר אישי וקרבי">
+              <svg class="header-weight-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.5 7h-1a1.5 1.5 0 0 0-1.5 1.5v1h-12v-1A1.5 1.5 0 0 0 4.5 7h-1A1.5 1.5 0 0 0 2 8.5v7A1.5 1.5 0 0 0 3.5 17h1a1.5 1.5 0 0 0 1.5-1.5v-1h12v1a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 20.5 7zm-15 8.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7zm15 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7z"/>
+              </svg>
+            </span>
+          </div>
+
+          <!-- Line 2: כשבא לך להתאמן -->
+          <h1 class="header-line-action">
+            <span>כשבא לך להתאמן</span>
+          </h1>
+
+          <!-- Line 3: האימון בא אליך -->
+          <div class="header-line-solution">
+            <span class="header-solution-pill">האימון בא אליך</span>
+          </div>
+        </div>
 
         <!-- Subheading (Exact Hebrew Text) -->
         <p class="hero-subheading">
