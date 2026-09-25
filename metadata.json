@@ -2,5 +2,7 @@
   "name": "עדן - כושר שמתאים בדיוק לך",
   "description": "דף נחיתה למאמנת כושר מוסמכת מוינגייט ויוצאת יחידה מובחרת. אימונים אישיים וקבוצתיים לכל הגילאים.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
