@@ -328,61 +328,16 @@
       flex-direction: column;
       gap: 18px;
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: var(--name-highlight-start);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.88rem;
-      font-weight: 700;
-      width: fit-content;
-    }
-    .hero-badge-pulse {
-      width: 8px;
-      height: 8px;
-      background-color: var(--name-highlight-start);
-      border-radius: 50%;
-      animation: pulse-ring 2s infinite;
-    }
-    /* Hero Professional 3-Line Glassmorphism Card (Dark Frosted Glass) */
+    /* Hero 3-Line Heading (No Box — Plain Text, Dark Background) */
     .hero-heading-card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 20px;
-      padding: 24px 20px;
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
+      gap: 10px;
       animation: heroCardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .hero-heading-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 42px -8px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-      border-color: rgba(233, 79, 112, 0.5);
-    }
-    .hero-heading-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-      animation: shimmerHeader 4.5s ease-in-out infinite;
     }
     /* Line 1: עדן + Weight Icon */
     .header-line-brand {
@@ -390,11 +345,6 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 5px 16px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: none;
     }
     .header-brand-name {
       font-size: 1.55rem;
@@ -407,20 +357,17 @@
       line-height: 1;
     }
     .header-weight-icon-badge {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-accent) 0%, #D63A5E 100%);
-      color: #ffffff;
+      width: 30px;
+      height: 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 3px 10px var(--color-accent-glow);
+      color: var(--name-highlight-start);
       animation: weightBob 3.5s ease-in-out infinite;
     }
     .header-weight-icon {
-      width: 17px;
-      height: 17px;
+      width: 26px;
+      height: 26px;
     }
     /* Line 2: כשבא לך להתאמן */
     .header-line-action {
@@ -441,15 +388,13 @@
     }
     .header-solution-pill {
       display: inline-block;
-      padding: 7px 22px;
-      border-radius: var(--radius-full);
-      background: linear-gradient(135deg, rgba(232, 180, 200, 0.22) 0%, rgba(242, 166, 160, 0.2) 100%);
-      border: 1px solid rgba(232, 180, 200, 0.55);
-      color: var(--name-highlight-start);
+      background: linear-gradient(135deg, var(--name-highlight-start), var(--name-highlight-end));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       font-size: 1.45rem;
       font-weight: 800;
       letter-spacing: -0.01em;
-      box-shadow: 0 4px 16px rgba(233, 79, 112, 0.2);
       animation: solutionPulse 4s ease-in-out infinite;
     }
 
@@ -471,28 +416,16 @@
         transform: scale(1.1) rotate(-6deg);
       }
     }
-    @keyframes shimmerHeader {
+    @keyframes solutionPulse {
       0%, 100% {
-        opacity: 0.35;
-        transform: scaleX(0.85);
+        opacity: 0.9;
       }
       50% {
         opacity: 1;
-        transform: scaleX(1.15);
-      }
-    }
-    @keyframes solutionPulse {
-      0%, 100% {
-        box-shadow: 0 4px 16px rgba(233, 79, 112, 0.2);
-        border-color: rgba(232, 180, 200, 0.55);
-      }
-      50% {
-        box-shadow: 0 6px 22px rgba(233, 79, 112, 0.35);
-        border-color: rgba(232, 180, 200, 0.85);
       }
     }
     .hero-heading {
-      display: none; /* Replaced by the 3-line glassmorphic hero-heading-card */
+      display: none; /* Replaced by the 3-line hero-heading-card */
     }
     .hero-subheading {
       font-size: 1.12rem;
@@ -1609,19 +1542,19 @@
     <div class="hero-ambient-glow"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badge" style="align-self: center;">
-          <span class="hero-badge-pulse"></span>
-          <span>מוסמכת וינגייט • ניסיון קרבי בצה״ל</span>
-        </div>
-
-        <!-- Professional Glassmorphism 3-Line Heading Box -->
+        <!-- 3-Line Hero Heading (Plain text, no box) -->
         <div class="hero-heading-card">
           <!-- Line 1: עדן + Weight / Dumbbell Icon -->
           <div class="header-line-brand">
             <span class="header-brand-name">עדן</span>
             <span class="header-weight-icon-badge" title="כושר אישי וקרבי">
-              <svg class="header-weight-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.5 7h-1a1.5 1.5 0 0 0-1.5 1.5v1h-12v-1A1.5 1.5 0 0 0 4.5 7h-1A1.5 1.5 0 0 0 2 8.5v7A1.5 1.5 0 0 0 3.5 17h1a1.5 1.5 0 0 0 1.5-1.5v-1h12v1a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 20.5 7zm-15 8.5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7zm15 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7z"/>
+              <svg class="header-weight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.5 6.5v11M17.5 6.5v11" stroke-width="2.5"/>
+                <rect x="4" y="9" width="2.5" height="6" rx="1" fill="currentColor" stroke="none"/>
+                <rect x="17.5" y="9" width="2.5" height="6" rx="1" fill="currentColor" stroke="none"/>
+                <rect x="1.5" y="10.5" width="2" height="3" rx="0.8" fill="currentColor" stroke="none"/>
+                <rect x="20.5" y="10.5" width="2" height="3" rx="0.8" fill="currentColor" stroke="none"/>
+                <line x1="6.5" y1="12" x2="17.5" y2="12"/>
               </svg>
             </span>
           </div>
