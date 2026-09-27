@@ -1877,8 +1877,45 @@
         </div>
       </div>
       <!-- TikTok & Instagram Official Embed Scripts -->
-      <script async src="https://www.tiktok.com/embed.js"></script>
-      <script async src="//www.instagram.com/embed.js"></script>
+      <!-- טעינה עצלה (lazy load): הסקריפטים נטענים רק כשהמשתמש מתקרב לאזור הזה בגלילה,      -->
+      <!-- ולא באופן אוטומטי מיד עם פתיחת הדף. זה מונע עומס מיותר על שרתי טיקטוק/אינסטגרם      -->
+      <!-- (כולל חסימת "overload-protect" מריבוי בקשות) ומשפר את מהירות הטעינה הראשונית. -->
+      <script>
+        (function () {
+          var momentsSection = document.getElementById("moments");
+          if (!momentsSection) return;
+          var scriptsLoaded = false;
+          function loadEmbedScripts() {
+            if (scriptsLoaded) return;
+            scriptsLoaded = true;
+            var tiktokScript = document.createElement("script");
+            tiktokScript.async = true;
+            tiktokScript.src = "https://www.tiktok.com/embed.js";
+            document.body.appendChild(tiktokScript);
+            var instaScript = document.createElement("script");
+            instaScript.async = true;
+            instaScript.src = "//www.instagram.com/embed.js";
+            document.body.appendChild(instaScript);
+          }
+          if ("IntersectionObserver" in window) {
+            var observer = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    loadEmbedScripts();
+                    observer.disconnect();
+                  }
+                });
+              },
+              { rootMargin: "400px 0px" } // מתחיל לטעון קצת לפני שהאזור בפועל נכנס למסך
+            );
+            observer.observe(momentsSection);
+          } else {
+            // דפדפן ישן בלי תמיכה ב-IntersectionObserver - טוען כרגיל
+            loadEmbedScripts();
+          }
+        })();
+      </script>
     </div>
   </section>
 
