@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <!-- Google tag (gtag.js) - נשלח רק אירוע שליחה, בלי שום תוכן מהטופס -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SWCMCZ84M7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SWCMCZ84M7');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הצהרת בריאות - עדן מאמנת כושר</title>
+  <meta name="description" content="טופס הצהרת בריאות למתאמנים של עדן, מאמנת כושר מוסמכת מוינגייט." />
+  <!-- דף שימושי בלבד למתאמנים - לא נועד להופיע בתוצאות חיפוש -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       Design tokens - זהים לדף הבית (index.html)
+       ========================================================================== */
+    :root {
+      --bg-main: #FBF1EA;
+      --bg-surface: #F5DCE0;
+      --bg-card: #FFF8F5;
+      --border-subtle: rgba(201, 127, 160, 0.22);
+      --color-secondary: #C97FA0;
+      --color-secondary-dark: #7A3F5C;
+      --color-accent: #E94F70;
+      --color-accent-dark: #B92D52;
+      --color-accent-glow: rgba(233, 79, 112, 0.35);
+      --text-heading: #2E1B2B;
+      --text-body: #2E1B2B;
+      --text-light: #4A2E44;
+      --text-muted: #6B4A63;
+      --text-dim: #8C6884;
+      --bg-dark: #322F56;
+      --text-on-dark: #FFFFFF;
+      --text-on-dark-muted: rgba(255, 255, 255, 0.78);
+      --border-on-dark: rgba(255, 255, 255, 0.14);
+      --name-highlight-start: #E8B4C8;
+      --name-highlight-end: #F2A6A0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --font-main: 'Heebo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      --font-display: 'Rubik', 'Heebo', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-main);
+      color: var(--text-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      direction: rtl;
+      text-align: right;
+    }
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-heading); line-height: 1.25; font-weight: 700; }
+    .container { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 20px; }
+    :focus-visible { outline: 3px solid rgba(233, 79, 112, 0.55); outline-offset: 2px; }
+
+    /* ---------- Header (זהה בסגנונו לנאבבר בדף הבית) ---------- */
+    .navbar {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border-on-dark);
+      padding: 10px 0;
+    }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .navbar-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-on-dark); }
+    .brand-badge {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-secondary));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.2rem; color: #fff;
+      box-shadow: 0 4px 12px var(--color-accent-glow);
+    }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .brand-name { font-size: 1.15rem; font-weight: 800; color: var(--text-on-dark); }
+    .brand-sub { font-size: 0.75rem; color: var(--name-highlight-start); font-weight: 500; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--text-on-dark); text-decoration: none; font-size: 0.9rem; font-weight: 600;
+      padding: 8px 14px; border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.1); border: 1px solid var(--border-on-dark);
+      transition: all 0.2s ease;
+    }
+    .back-link:hover { background: rgba(255, 255, 255, 0.18); color: var(--name-highlight-start); border-color: var(--name-highlight-start); }
+
+    /* ---------- Hero band ---------- */
+    .page-hero { background: var(--bg-dark); padding: 40px 0 56px; text-align: center; }
+    .page-hero h1 { color: var(--text-on-dark); font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .page-hero h1 span {
+      background: linear-gradient(135deg, var(--name-highlight-start), var(--name-highlight-end));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .page-hero p { color: var(--text-on-dark-muted); max-width: 520px; margin: 12px auto 0; font-size: 1.02rem; line-height: 1.7; }
+
+    /* ---------- Form layout ---------- */
+    .form-wrap { margin-top: -28px; padding-bottom: 72px; position: relative; }
+    .decl-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201, 127, 160, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 40px -10px rgba(46, 27, 43, 0.08);
+    }
+    .decl-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--color-accent), #D63A5E);
+      color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px var(--color-accent-glow);
+    }
+    .decl-card-head h2 { font-size: 1.25rem; }
+    .card-note { font-size: 0.9rem; color: var(--text-muted); margin: -8px 0 18px; line-height: 1.65; }
+
+    .form-row { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+    .form-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-size: 0.95rem; font-weight: 600; color: var(--text-heading); display: flex; align-items: center; gap: 4px; }
+    .required-star { color: var(--color-accent); }
+    .optional-tag { font-size: 0.8rem; font-weight: 500; color: var(--text-dim); }
+    .form-input, .form-textarea {
+      width: 100%; background: #FFFFFF;
+      border: 1px solid rgba(201, 127, 160, 0.35);
+      border-radius: var(--radius-md);
+      padding: 13px 16px; color: var(--text-heading);
+      font-family: var(--font-main); font-size: 1rem;
+      transition: all 0.2s ease; outline: none; direction: rtl;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(233, 79, 112, 0.25); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+    .form-textarea { resize: vertical; min-height: 96px; }
+    .ltr-input { direction: ltr; text-align: right; }
+    .form-input-error { border-color: #ef4444 !important; background: #fff3f5 !important; box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important; }
+    .field-error { color: #dc2626; font-size: 0.82rem; font-weight: 600; display: none; }
+    .field-error.show { display: block; }
+
+    /* ---------- Checkbox ---------- */
+    .check-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-size: 0.97rem; line-height: 1.6; color: var(--text-heading); }
+    .check-row input { width: 22px; height: 22px; margin-top: 2px; flex-shrink: 0; accent-color: var(--color-accent); cursor: pointer; }
+    .check-block { margin-bottom: 14px; }
+    .minor-toggle { background: rgba(233, 79, 112, 0.07); border: 1px dashed rgba(233, 79, 112, 0.4); border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 18px; }
+    .sub-panel { border-top: 1px solid var(--border-subtle); padding-top: 18px; margin-top: 6px; }
+    .sub-panel[hidden] { display: none; }
+    .sub-title { font-size: 1.02rem; margin-bottom: 14px; color: var(--color-secondary-dark); }
+
+    /* ---------- Yes / No questions ---------- */
+    .q-row { border: 0; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 12px; }
+    .q-row:last-of-type { border-bottom: 0; }
+    .q-text { font-size: 0.97rem; font-weight: 600; line-height: 1.6; padding: 0; width: 100%; }
+    .q-num { color: var(--color-accent); margin-inline-end: 6px; }
+    .yn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .yn { position: relative; cursor: pointer; }
+    .yn input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; margin: 0; }
+    .yn span {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 74px; padding: 9px 18px; border-radius: var(--radius-full);
+      border: 1px solid rgba(201, 127, 160, 0.4); background: #fff;
+      font-weight: 700; font-size: 0.95rem; color: var(--text-muted);
+      transition: all 0.15s ease;
+    }
+    .yn:hover span { border-color: var(--color-secondary); }
+    .yn input:checked + span { background: var(--bg-dark); border-color: var(--bg-dark); color: #fff; }
+    .yn-yes input:checked + span { background: var(--color-accent); border-color: var(--color-accent); }
+    .yn input:focus-visible + span { outline: 3px solid rgba(233, 79, 112, 0.55); outline-offset: 2px; }
+    .q-row.has-error { background: #fff3f5; border-radius: var(--radius-md); padding-inline: 12px; margin-inline: -12px; }
+
+    .privacy-box {
+      background: #fff; border: 1px solid rgba(201, 127, 160, 0.25); border-radius: var(--radius-md);
+      padding: 14px 16px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px;
+    }
+    .privacy-box strong { color: var(--text-heading); }
+    .sig-date { font-size: 0.88rem; color: var(--text-dim); }
+
+    /* ---------- Buttons & alerts ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: var(--font-main); font-weight: 700; font-size: 1.05rem;
+      padding: 14px 28px; border-radius: var(--radius-md); text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: none; text-align: center; line-height: 1.2;
+    }
+    .btn-primary { background: linear-gradient(135deg, var(--color-accent) 0%, #D63A5E 100%); color: #fff; box-shadow: 0 4px 20px var(--color-accent-glow); width: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); background: linear-gradient(135deg, #F27D95 0%, #D63A5E 100%); box-shadow: 0 8px 26px rgba(233, 79, 112, 0.45); }
+    .btn-secondary { background: var(--bg-card); color: var(--text-heading); border: 1px solid var(--border-subtle); width: 100%; }
+    .btn-secondary:hover { background: #fff; border-color: var(--color-secondary); transform: translateY(-2px); }
+    .btn-loading { opacity: 0.7; pointer-events: none; }
+
+    .status-alert { display: none; padding: 16px 18px; border-radius: var(--radius-md); margin-bottom: 20px; font-size: 1rem; font-weight: 600; align-items: center; gap: 12px; }
+    .status-alert.show { display: flex; }
+    .status-error { background: #FDECEC; border: 1px solid rgba(239, 68, 68, 0.4); color: #991b1b; }
+
+    .success-view { display: none; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 12px 0; }
+    .success-view.show { display: flex; }
+    .success-icon-wrap {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(233, 79, 112, 0.15); border: 2px solid var(--color-accent); color: var(--color-accent);
+      display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px var(--color-accent-glow);
+    }
+    .success-title { font-size: 1.5rem; font-weight: 800; }
+    .success-subtext { font-size: 0.98rem; color: var(--text-muted); max-width: 440px; line-height: 1.7; }
+    .success-actions { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 420px; margin-top: 6px; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { background: #F3DBE0; border-top: 1px solid rgba(201, 127, 160, 0.3); padding: 28px 0; text-align: center; font-size: 0.88rem; color: var(--text-muted); }
+    .site-footer a { color: var(--color-accent-dark); font-weight: 600; text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    /* שדה מלכודת לבוטים: מוסתר בלי להזיז אותו מחוץ למסך (ב-RTL זה יוצר גלילה אופקית ענקית) */
+    .hp-field { position: absolute; top: 0; right: 0; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+
+    @media (min-width: 640px) {
+      .decl-card { padding: 34px 32px; }
+      .form-row { grid-template-columns: 1fr 1fr; }
+      .q-row { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+      .q-text { width: auto; flex: 1; }
+      .yn-group { flex-shrink: 0; }
+      .page-hero h1 { font-size: 2.6rem; }
+      .success-actions { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner" style="max-width: 1140px;">
+      <a href="./" class="navbar-brand" aria-label="עדן - חזרה לדף הבית">
+        <div class="brand-badge">ע</div>
+        <div class="brand-text">
+          <span class="brand-name">עדן</span>
+          <span class="brand-sub">מאמנת כושר מוסמכת וינגייט</span>
+        </div>
+      </a>
+      <a href="./" class="back-link">
+        <span>חזרה לאתר</span>
+        <span aria-hidden="true">←</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>הצהרת <span>בריאות</span></h1>
+      <p>לפני שמתחילים להתאמן - כמה דקות כדי שנוודא שהאימון בטוח ומותאם בדיוק אליכם. אפשר למלא מהטלפון.</p>
+    </div>
+  </section>
+
+  <main class="form-wrap">
+    <div class="container">
+
+      <div id="form-error-alert" class="status-alert status-error" role="alert">
+        <span id="form-error-text">אנא תקנו את השדות המסומנים.</span>
+      </div>
+
+      <form id="health-form" novalidate autocomplete="on">
+
+        <!-- honeypot נגד בוטים - נשאר ריק אצל משתמשים אמיתיים -->
+        <div class="hp-field" aria-hidden="true">
+          <label>אל תמלאו שדה זה<input type="text" id="hp-website" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <!-- 1. פרטי המתאמן/ת -->
+        <section class="decl-card" aria-labelledby="sec1-title">
+          <div class="decl-card-head">
+            <span class="step-num">1</span>
+            <h2 id="sec1-title">פרטי המתאמן/ת</h2>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" data-field="p-name">
+              <label for="p-name" class="form-label"><span>שם מלא</span><span class="required-star">*</span></label>
+              <input type="text" id="p-name" class="form-input" autocomplete="name" placeholder="ישראל ישראלי" />
+              <div class="field-error">נא להזין שם מלא</div>
+            </div>
+            <div class="form-group" data-field="p-id">
+              <label for="p-id" class="form-label"><span>תעודת זהות</span><span class="required-star">*</span></label>
+              <input type="text" id="p-id" class="form-input ltr-input" inputmode="numeric" maxlength="9" placeholder="000000000" />
+              <div class="field-error">נא להזין מספר תעודת זהות (5-9 ספרות)</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" data-field="p-birth">
+              <label for="p-birth" class="form-label"><span>תאריך לידה</span><span class="required-star">*</span></label>
+              <input type="date" id="p-birth" class="form-input ltr-input" autocomplete="bday" min="1920-01-01" />
+              <div class="field-error">נא לבחור תאריך לידה תקין</div>
+            </div>
+            <div class="form-group" data-field="p-phone">
+              <label for="p-phone" class="form-label"><span>טלפון</span><span class="required-star">*</span></label>
+              <input type="tel" id="p-phone" class="form-input ltr-input" autocomplete="tel" placeholder="050-0000000" />
+              <div class="field-error">נא להזין מספר טלפון תקין</div>
+            </div>
+          </div>
+
+          <div class="form-group" data-field="p-email">
+            <label for="p-email" class="form-label"><span>אימייל</span><span class="optional-tag">(לא חובה)</span></label>
+            <input type="email" id="p-email" class="form-input ltr-input" autocomplete="email" placeholder="name@example.com" />
+            <div class="field-error">כתובת האימייל אינה תקינה</div>
+          </div>
+
+          <div class="minor-toggle">
+            <label class="check-row">
+              <input type="checkbox" id="is-minor" />
+              <span>המתאמן/ת הוא/היא <strong>קטין/ה</strong> (מתחת לגיל 18) - ההצהרה תמולא על ידי הורה או אפוטרופוס</span>
+            </label>
+          </div>
+
+          <div id="guardian-panel" class="sub-panel" hidden>
+            <h3 class="sub-title">פרטי ההורה / האפוטרופוס</h3>
+            <div class="form-row">
+              <div class="form-group" data-field="g-name">
+                <label for="g-name" class="form-label"><span>שם מלא</span><span class="required-star">*</span></label>
+                <input type="text" id="g-name" class="form-input" autocomplete="off" />
+                <div class="field-error">נא להזין שם ההורה / האפוטרופוס</div>
+              </div>
+              <div class="form-group" data-field="g-id">
+                <label for="g-id" class="form-label"><span>תעודת זהות</span><span class="required-star">*</span></label>
+                <input type="text" id="g-id" class="form-input ltr-input" inputmode="numeric" maxlength="9" placeholder="000000000" />
+                <div class="field-error">נא להזין מספר תעודת זהות (5-9 ספרות)</div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group" data-field="g-phone">
+                <label for="g-phone" class="form-label"><span>טלפון</span><span class="required-star">*</span></label>
+                <input type="tel" id="g-phone" class="form-input ltr-input" placeholder="050-0000000" />
+                <div class="field-error">נא להזין מספר טלפון תקין</div>
+              </div>
+              <div class="form-group" data-field="g-relation">
+                <label for="g-relation" class="form-label"><span>קרבה למתאמן/ת</span><span class="required-star">*</span></label>
+                <input type="text" id="g-relation" class="form-input" placeholder="אמא / אבא / אפוטרופוס" />
+                <div class="field-error">נא לציין קרבה</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. איש קשר לשעת חירום -->
+        <section class="decl-card" aria-labelledby="sec2-title">
+          <div class="decl-card-head">
+            <span class="step-num">2</span>
+            <h2 id="sec2-title">איש קשר לשעת חירום</h2>
+          </div>
+          <p class="card-note">מישהו שנוכל להתקשר אליו אם יקרה משהו. אם ההצהרה ממולאת על ידי הורה - אפשר לציין הורה נוסף או קרוב אחר.</p>
+          <div class="form-row">
+            <div class="form-group" data-field="e-name">
+              <label for="e-name" class="form-label"><span>שם</span><span class="required-star">*</span></label>
+              <input type="text" id="e-name" class="form-input" autocomplete="off" />
+              <div class="field-error">נא להזין שם</div>
+            </div>
+            <div class="form-group" data-field="e-phone">
+              <label for="e-phone" class="form-label"><span>טלפון</span><span class="required-star">*</span></label>
+              <input type="tel" id="e-phone" class="form-input ltr-input" placeholder="050-0000000" />
+              <div class="field-error">נא להזין מספר טלפון תקין</div>
+            </div>
+          </div>
+          <div class="form-group" data-field="e-relation">
+            <label for="e-relation" class="form-label"><span>קרבה</span><span class="optional-tag">(לא חובה)</span></label>
+            <input type="text" id="e-relation" class="form-input" placeholder="בן/בת זוג, הורה, חבר/ה..." />
+          </div>
+        </section>
+
+        <!-- 3. שאלון בריאות -->
+        <section class="decl-card" aria-labelledby="sec3-title">
+          <div class="decl-card-head">
+            <span class="step-num">3</span>
+            <h2 id="sec3-title">שאלון בריאות</h2>
+          </div>
+          <p class="card-note">נא לענות על כל השאלות, על המתאמן/ת. אם ההצהרה ממולאת עבור קטין/ה - התשובות הן על הקטין/ה.</p>
+
+          <div id="questions"></div>
+
+          <div class="form-group" data-field="q-details" style="margin-top: 16px;">
+            <label for="q-details" class="form-label"><span>פירוט לתשובות "כן"</span><span id="q-details-star" class="required-star" hidden>*</span><span id="q-details-opt" class="optional-tag">(אם ענית "כן" על אחת השאלות)</span></label>
+            <textarea id="q-details" class="form-textarea" placeholder="למשל: אסתמה מאמץ - משתמש/ת במשאף לפני פעילות; ניתוח ברך לפני 8 חודשים..."></textarea>
+            <div class="field-error">נא לפרט את התשובות שסימנת "כן"</div>
+          </div>
+
+          <div class="form-group">
+            <label for="q-other" class="form-label"><span>תרופות קבועות, אלרגיות או מגבלות נוספות</span><span class="optional-tag">(לא חובה)</span></label>
+            <textarea id="q-other" class="form-textarea" placeholder="כל דבר שחשוב שהמאמנת תדע כדי לאמן אתכם בבטחה"></textarea>
+          </div>
+        </section>
+
+        <!-- 4. הצהרה וחתימה -->
+        <section class="decl-card" aria-labelledby="sec4-title">
+          <div class="decl-card-head">
+            <span class="step-num">4</span>
+            <h2 id="sec4-title">הצהרה וחתימה</h2>
+          </div>
+
+          <div class="check-block" data-field="c1">
+            <label class="check-row">
+              <input type="checkbox" id="c1" />
+              <span>אני מצהיר/ה כי הפרטים שמסרתי בטופס זה נכונים ומלאים, וכי למיטב ידיעתי המתאמן/ת כשיר/ה מבחינה בריאותית להשתתף בפעילות גופנית.</span>
+            </label>
+            <div class="field-error">יש לאשר את ההצהרה</div>
+          </div>
+          <div class="check-block" data-field="c2">
+            <label class="check-row">
+              <input type="checkbox" id="c2" />
+              <span>אני מתחייב/ת לעדכן את המאמנת על כל שינוי במצב הבריאותי, ולהפסיק את הפעילות ולהודיע מיד על כאב, סחרחורת, קוצר נשימה או תחושה חריגה בזמן האימון.</span>
+            </label>
+            <div class="field-error">יש לאשר את ההצהרה</div>
+          </div>
+          <div class="check-block" data-field="c3">
+            <label class="check-row">
+              <input type="checkbox" id="c3" />
+              <span>ידוע לי כי פעילות גופנית כרוכה בסיכון מסוים, והשתתפותי (או השתתפות הקטין/ה שבאחריותי) היא מרצוני ובאחריותי.</span>
+            </label>
+            <div class="field-error">יש לאשר את ההצהרה</div>
+          </div>
+
+          <div class="privacy-box">
+            <strong>פרטיות:</strong> המידע בטופס הוא מידע רפואי רגיש. הוא נשלח אל עדן בלבד, משמש אך ורק לצורך התאמת האימון ובטיחות המתאמן/ת, ולא יועבר לצד שלישי. ניתן לבקש בכל עת לעיין במידע, לתקן אותו או למחוק אותו - פשוט פנו לעדן.
+          </div>
+          <div class="check-block" data-field="c4">
+            <label class="check-row">
+              <input type="checkbox" id="c4" />
+              <span>אני מסכים/ה לאיסוף ולשמירת המידע הרפואי כמפורט לעיל.</span>
+            </label>
+            <div class="field-error">יש לאשר את הסכמת הפרטיות</div>
+          </div>
+
+          <div class="form-group" data-field="sig" style="margin-top: 22px;">
+            <label for="sig" class="form-label"><span>חתימה דיגיטלית - הקלידו שם מלא</span><span class="required-star">*</span></label>
+            <input type="text" id="sig" class="form-input" autocomplete="off" placeholder="שם המתאמן/ת, או שם ההורה אם המתאמן/ת קטין/ה" />
+            <div class="sig-date">תאריך החתימה: <strong id="sig-date"></strong></div>
+            <div class="field-error">נא להקליד שם מלא כחתימה</div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 10px;">
+            <span id="btn-text">שליחת הצהרת בריאות</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </section>
+      </form>
+
+      <!-- תצוגת הצלחה -->
+      <section id="success-view" class="decl-card success-view" role="region" aria-live="polite">
+        <div class="success-icon-wrap">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2 class="success-title">ההצהרה נשלחה, תודה!</h2>
+        <p class="success-subtext">הצהרת הבריאות התקבלה אצל עדן. אם יש משהו שצריך להבהיר לגבי המידע שמילאתם - עדן תיצור איתכם קשר לפני האימון.</p>
+        <div class="success-actions">
+          <a href="https://wa.me/972506433283?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%93%D7%9F%2C%20%D7%9E%D7%9C%D7%90%D7%AA%D7%99%20%D7%94%D7%A8%D7%92%D7%A2%20%D7%94%D7%A6%D7%94%D7%A8%D7%AA%20%D7%91%D7%A8%D7%99%D7%90%D7%95%D7%AA%20%D7%91%D7%90%D7%AA%D7%A8" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="success-wa">
+            <span>עדכון בוואטסאפ שמילאתי</span>
+          </a>
+          <a href="./" class="btn btn-secondary"><span>חזרה לאתר</span></a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 עדן - כשבא לך להתאמן, האימון בא אליך · <a href="./">חזרה לדף הבית</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // הגדרות - חייבות להיות זהות לאלה שבדף הבית (index.html).
+    // אם מחליפים טלפון / מייל / מפתחות EmailJS - יש לעדכן בשני הקבצים.
+    // =========================================================================
+    const PHONE_DISPLAY = "050-643-3283";
+    const RECIPIENT_EMAIL = "edenzivat@gmail.com";
+    const EMAILJS_SERVICE_ID = "service_ipzve1r";
+    const EMAILJS_TEMPLATE_ID = "template_a0tgn4r";
+    const EMAILJS_PUBLIC_KEY = "qRX0AL3FJ3mYFdgYm";
+
+    // שאלון הבריאות. allowNA - מוסיף אפשרות "לא רלוונטי".
+    const QUESTIONS = [
+      { text: "האם אמר לך רופא/ה אי פעם שיש לך בעיית לב, או שמותר לך לבצע פעילות גופנית רק בהשגחה רפואית?" },
+      { text: "האם את/ה חש/ה כאבים בחזה בזמן מאמץ גופני או במנוחה?" },
+      { text: "האם את/ה סובל/ת מסחרחורות, התעלפויות או אובדן הכרה (כולל בעבר)?" },
+      { text: "האם יש לך לחץ דם גבוה, או שאת/ה נוטל/ת תרופות קבועות ללב או ללחץ דם?" },
+      { text: "האם יש לך בעיה בעצמות, במפרקים, בגב או בשרירים (כולל פציעה או ניתוח ב-12 החודשים האחרונים) שעלולה להחמיר בפעילות גופנית?" },
+      { text: "האם את/ה סובל/ת מאסתמה או מבעיה נשימתית אחרת?" },
+      { text: "האם את/ה סובל/ת מסוכרת, אפילפסיה או מחלה כרונית אחרת?" },
+      { text: "האם את בהריון או עד שנה לאחר לידה?", allowNA: true },
+      { text: "האם קיימת סיבה אחרת כלשהי שבגללה לא כדאי לך לבצע פעילות גופנית?" }
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const form = $("health-form");
+    const errorAlert = $("form-error-alert");
+
+    // ----- בניית השאלון -----
+    (function buildQuestions() {
+      const box = $("questions");
+      QUESTIONS.forEach((q, i) => {
+        const fs = document.createElement("fieldset");
+        fs.className = "q-row";
+        fs.dataset.q = String(i);
+        const legend = document.createElement("legend");
+        legend.className = "q-text";
+        const num = document.createElement("span");
+        num.className = "q-num";
+        num.textContent = String(i + 1);
+        legend.appendChild(num);
+        legend.appendChild(document.createTextNode(q.text));
+        const group = document.createElement("div");
+        group.className = "yn-group";
+        group.setAttribute("role", "radiogroup");
+        const opts = [["לא", ""], ["כן", " yn-yes"]];
+        if (q.allowNA) opts.push(["לא רלוונטי", ""]);
+        opts.forEach(([val, cls]) => {
+          const label = document.createElement("label");
+          label.className = "yn" + cls;
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = "q" + i;
+          input.value = val;
+          const span = document.createElement("span");
+          span.textContent = val;
+          label.appendChild(input);
+          label.appendChild(span);
+          group.appendChild(label);
+        });
+        const err = document.createElement("div");
+        err.className = "field-error";
+        err.textContent = "נא לבחור תשובה";
+        fs.appendChild(legend);
+        fs.appendChild(group);
+        fs.appendChild(err);
+        box.appendChild(fs);
+      });
+    })();
+
+    // ----- תאריך החתימה + הגבלת תאריך לידה -----
+    const today = new Date();
+    $("sig-date").textContent = today.toLocaleDateString("he-IL");
+    $("p-birth").max = today.toISOString().slice(0, 10);
+
+    // ----- קטין/ה: הצגת פרטי הורה -----
+    const minorCheck = $("is-minor");
+    const guardianPanel = $("guardian-panel");
+    function syncMinor() { guardianPanel.hidden = !minorCheck.checked; }
+    minorCheck.addEventListener("change", syncMinor);
+
+    function calcAge(dateStr) {
+      const b = new Date(dateStr);
+      if (isNaN(b)) return null;
+      let age = today.getFullYear() - b.getFullYear();
+      const m = today.getMonth() - b.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < b.getDate())) age--;
+      return age;
+    }
+    // אם תאריך הלידה מעיד על קטין/ה - מסמנים אוטומטית
+    $("p-birth").addEventListener("change", () => {
+      const age = calcAge($("p-birth").value);
+      if (age !== null && age < 18 && !minorCheck.checked) {
+        minorCheck.checked = true;
+        syncMinor();
+      }
+    });
+
+    // ----- פירוט חובה כשיש תשובת "כן" -----
+    function anyYes() {
+      return QUESTIONS.some((_, i) => {
+        const c = form.querySelector('input[name="q' + i + '"]:checked');
+        return c && c.value === "כן";
+      });
+    }
+    function syncDetailsRequirement() {
+      const need = anyYes();
+      $("q-details-star").hidden = !need;
+      $("q-details-opt").hidden = need;
+    }
+    $("questions").addEventListener("change", syncDetailsRequirement);
+
+    // ----- ולידציה -----
+    const digits = (s) => (s || "").replace(/\D/g, "");
+    const validPhone = (s) => { const d = digits(s); return d.length >= 9 && d.length <= 13; };
+    const validId = (s) => { const d = digits(s); return d.length >= 5 && d.length <= 9; };
+    const validEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+
+    function fieldWrap(id) { return form.querySelector('[data-field="' + id + '"]'); }
+    function setFieldError(id, on) {
+      const wrap = fieldWrap(id);
+      if (!wrap) return;
+      const err = wrap.querySelector(".field-error");
+      const input = wrap.querySelector(".form-input, .form-textarea");
+      if (err) err.classList.toggle("show", on);
+      if (input) input.classList.toggle("form-input-error", on);
+    }
+    function clearErrors() {
+      form.querySelectorAll(".field-error").forEach((e) => e.classList.remove("show"));
+      form.querySelectorAll(".form-input-error").forEach((e) => e.classList.remove("form-input-error"));
+      form.querySelectorAll(".q-row").forEach((e) => e.classList.remove("has-error"));
+      errorAlert.classList.remove("show");
+    }
+
+    // מנקה שגיאה של שדה ברגע שמתחילים לתקן אותו
+    form.addEventListener("input", (e) => {
+      const wrap = e.target.closest("[data-field]");
+      if (wrap) setFieldError(wrap.dataset.field, false);
+    });
+    form.addEventListener("change", (e) => {
+      const wrap = e.target.closest("[data-field]");
+      if (wrap) setFieldError(wrap.dataset.field, false);
+      const row = e.target.closest(".q-row");
+      if (row) {
+        row.classList.remove("has-error");
+        row.querySelector(".field-error").classList.remove("show");
+      }
+    });
+
+    function validate() {
+      clearErrors();
+      const bad = []; // רשימת אלמנטים לשגיאה, לפי סדר הופעתם
+
+      const check = (id, ok) => { if (!ok) { setFieldError(id, true); bad.push(fieldWrap(id)); } };
+
+      check("p-name", $("p-name").value.trim().length >= 2);
+      check("p-id", validId($("p-id").value));
+      const age = $("p-birth").value ? calcAge($("p-birth").value) : null;
+      check("p-birth", age !== null && age >= 0 && age <= 110);
+      check("p-phone", validPhone($("p-phone").value));
+      const email = $("p-email").value.trim();
+      check("p-email", email === "" || validEmail(email));
+
+      if (minorCheck.checked) {
+        check("g-name", $("g-name").value.trim().length >= 2);
+        check("g-id", validId($("g-id").value));
+        check("g-phone", validPhone($("g-phone").value));
+        check("g-relation", $("g-relation").value.trim().length >= 2);
+      }
+
+      check("e-name", $("e-name").value.trim().length >= 2);
+      check("e-phone", validPhone($("e-phone").value));
+
+      QUESTIONS.forEach((_, i) => {
+        if (!form.querySelector('input[name="q' + i + '"]:checked')) {
+          const row = form.querySelector('.q-row[data-q="' + i + '"]');
+          row.classList.add("has-error");
+          row.querySelector(".field-error").classList.add("show");
+          bad.push(row);
+        }
+      });
+
+      check("q-details", !anyYes() || $("q-details").value.trim().length >= 2);
+
+      ["c1", "c2", "c3", "c4"].forEach((id) => {
+        const ok = $(id).checked;
+        const wrap = fieldWrap(id);
+        wrap.querySelector(".field-error").classList.toggle("show", !ok);
+        if (!ok) bad.push(wrap);
+      });
+
+      check("sig", $("sig").value.trim().length >= 2);
+
+      if (bad.length) {
+        // לגלול לשגיאה הראשונה לפי מיקומה בדף
+        bad.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
+        $("form-error-text").textContent = "חלק מהשדות חסרים או לא תקינים - סומנו באדום.";
+        errorAlert.classList.add("show");
+        bad[0].scrollIntoView({ behavior: "smooth", block: "center" });
+        return false;
+      }
+      return true;
+    }
+
+    // ----- בניית תוכן המייל (טקסט פשוט, קריא גם בלי עיצוב) -----
+    function buildMessage() {
+      const v = (id) => $(id).value.trim();
+      const age = calcAge($("p-birth").value);
+      const birth = new Date($("p-birth").value).toLocaleDateString("he-IL");
+      const lines = [];
+      const yesCount = QUESTIONS.filter((_, i) => form.querySelector('input[name="q' + i + '"]:checked').value === "כן").length;
+
+      lines.push("הצהרת בריאות - התקבלה ב-" + new Date().toLocaleString("he-IL"));
+      lines.push(yesCount === 0
+        ? "לא סומנו תשובות 'כן' בשאלון הבריאות"
+        : yesCount === 1
+          ? "שימו לב: סומנה תשובת 'כן' אחת בשאלון הבריאות"
+          : "שימו לב: סומנו " + yesCount + " תשובות 'כן' בשאלון הבריאות");
+      lines.push("");
+      lines.push("--- פרטי המתאמן/ת ---");
+      lines.push("שם: " + v("p-name"));
+      lines.push("ת.ז: " + digits(v("p-id")));
+      lines.push("תאריך לידה: " + birth + " (גיל " + age + ")");
+      lines.push("טלפון: " + v("p-phone"));
+      lines.push("אימייל: " + (v("p-email") || "לא צוין"));
+      lines.push("קטין/ה: " + (minorCheck.checked ? "כן" : "לא"));
+
+      if (minorCheck.checked) {
+        lines.push("");
+        lines.push("--- הורה / אפוטרופוס ---");
+        lines.push("שם: " + v("g-name"));
+        lines.push("ת.ז: " + digits(v("g-id")));
+        lines.push("טלפון: " + v("g-phone"));
+        lines.push("קרבה: " + v("g-relation"));
+      }
+
+      lines.push("");
+      lines.push("--- איש קשר לשעת חירום ---");
+      lines.push("שם: " + v("e-name"));
+      lines.push("טלפון: " + v("e-phone"));
+      lines.push("קרבה: " + (v("e-relation") || "לא צוינה"));
+
+      lines.push("");
+      lines.push("--- שאלון בריאות ---");
+      QUESTIONS.forEach((q, i) => {
+        const ans = form.querySelector('input[name="q' + i + '"]:checked').value;
+        lines.push((i + 1) + ". " + q.text + " >> " + ans);
+      });
+      lines.push("");
+      lines.push("פירוט לתשובות 'כן': " + (v("q-details") || "-"));
+      lines.push("תרופות / אלרגיות / מגבלות: " + (v("q-other") || "-"));
+
+      lines.push("");
+      lines.push("--- הצהרות שאושרו ---");
+      lines.push("[v] הפרטים נכונים והמתאמן/ת כשיר/ה לפעילות גופנית");
+      lines.push("[v] התחייבות לעדכן על שינוי במצב הבריאותי ולהפסיק בכאב/סחרחורת/קוצר נשימה");
+      lines.push("[v] ידוע על הסיכון בפעילות גופנית והשתתפות באחריות המשתתף/ת");
+      lines.push("[v] הסכמה לאיסוף ושמירת המידע הרפואי");
+
+      lines.push("");
+      lines.push("חתימה דיגיטלית (שם מוקלד): " + v("sig"));
+      lines.push("תאריך חתימה: " + new Date().toLocaleDateString("he-IL"));
+      return lines.join("\n");
+    }
+
+    // ----- שליחה -----
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // בוט מילא את שדה המלכודת - מתעלמים בשקט, בלי לשלוח
+      if ($("hp-website").value) {
+        showSuccess();
+        return;
+      }
+      if (!validate()) return;
+
+      const btn = $("submit-btn");
+      const btnText = $("btn-text");
+      btn.classList.add("btn-loading");
+      btnText.textContent = "שולח...";
+
+      const name = $("p-name").value.trim();
+      const templateParams = {
+        // התבנית הקיימת ב-EmailJS מציגה את user_name / user_phone / message,
+        // לכן כל תוכן ההצהרה נכנס לשדה message וכותרת הפנייה ב-user_name
+        user_name: "הצהרת בריאות - " + name,
+        user_phone: $("p-phone").value.trim(),
+        phone_number: $("p-phone").value.trim(),
+        message: buildMessage(),
+        to_email: RECIPIENT_EMAIL,
+        timestamp: new Date().toLocaleString("he-IL")
+      };
+
+      try {
+        if (typeof emailjs === "undefined") throw new Error("emailjs SDK not loaded");
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, EMAILJS_PUBLIC_KEY);
+        // אירוע בלבד - בלי שום מידע מהטופס
+        if (typeof gtag === "function") gtag("event", "health_declaration_submit");
+        showSuccess();
+      } catch (err) {
+        // בכוונה לא מדפיסים / שומרים את תוכן הטופס (מידע רפואי רגיש)
+        console.error("Health declaration send failed");
+        $("form-error-text").textContent = "אירעה שגיאה בשליחה, ולכן ההצהרה לא נשלחה. נסו שוב בעוד רגע או פנו לעדן בוואטסאפ/בטלפון: " + PHONE_DISPLAY;
+        errorAlert.classList.add("show");
+        errorAlert.scrollIntoView({ behavior: "smooth", block: "center" });
+        btn.classList.remove("btn-loading");
+        btnText.textContent = "שליחת הצהרת בריאות";
+      }
+    });
+
+    function showSuccess() {
+      form.style.display = "none";
+      errorAlert.classList.remove("show");
+      $("success-view").classList.add("show");
+      $("success-view").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  </script>
+</body>
+</html>
