@@ -13,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>הצהרת בריאות - עדן מאמנת כושר</title>
   <meta name="description" content="טופס הצהרת בריאות למתאמנים של עדן, מאמנת כושר מוסמכת מוינגייט." />
+  <!-- דף שימושי בלבד למתאמנים - לא נועד להופיע בתוצאות חיפוש -->
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* Design tokens - זהים לדף הבית (index.html) */
     :root {
       --bg-main: #FBF1EA;
       --bg-card: #FFF8F5;
@@ -68,15 +70,18 @@
     .form-wrap { margin-top: -28px; padding-bottom: 72px; position: relative; }
     .form-frame-card { background: #fff; border: 1px solid rgba(201, 127, 160, 0.3); border-radius: var(--radius-lg); box-shadow: 0 20px 40px -10px rgba(46, 27, 43, 0.08); overflow: hidden; }
     .form-frame-card iframe { display: block; width: 100%; min-width: 100%; max-width: 100%; height: 1600px; border: 0; }
-    
+    /* בנייד: כפתור שפותח את הטופס במסך מלא (הטופס המשובץ ברוחב קבוע ונחתך במסכים צרים) */
     .mobile-open-card { display: none; text-align: center; padding: 32px 22px; background: var(--bg-card); border: 1px solid rgba(201, 127, 160, 0.3); border-radius: var(--radius-lg); box-shadow: 0 20px 40px -10px rgba(46, 27, 43, 0.08); }
+    .mobile-open-card h2 { font-size: 1.3rem; margin-bottom: 10px; }
+    .mobile-open-card p { color: var(--text-muted); font-size: 0.97rem; line-height: 1.75; margin-bottom: 22px; }
     .mobile-open-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 24px; border-radius: var(--radius-md); background: linear-gradient(135deg, var(--color-accent) 0%, #D63A5E 100%); color: #fff; font-weight: 700; font-size: 1.08rem; text-decoration: none; box-shadow: 0 4px 20px var(--color-accent-glow); }
-    
+    .mobile-open-steps { list-style: none; text-align: right; margin: 0 0 22px; display: flex; flex-direction: column; gap: 10px; }
+    .mobile-open-steps li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--text-heading); }
+    .mobile-open-steps b { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--color-accent); color: #fff; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; }
     @media (max-width: 699px) {
       .mobile-open-card { display: block; }
       .desktop-embed { display: none; }
     }
-    
     .form-fallback { text-align: center; font-size: 0.92rem; color: var(--text-muted); margin-top: 18px; line-height: 1.8; }
     .form-fallback a { color: var(--color-accent-dark); font-weight: 700; text-decoration: none; }
     .form-fallback a:hover { text-decoration: underline; }
@@ -109,3 +114,56 @@
       <h1>הצהרת <span>בריאות</span></h1>
       <p>לפני שמתחילים להתאמן - כמה דקות כדי שנוודא שהאימון בטוח ומותאם בדיוק אליכם. אפשר למלא ולחתום מהטלפון.</p>
     </div>
+  </section>
+
+  <main class="form-wrap">
+    <div class="container" style="max-width: 800px;">
+      <!-- נייד: כפתור לפתיחת הטופס במסך מלא -->
+      <div class="mobile-open-card">
+        <a class="mobile-open-btn" href="https://form.jotform.com/262993778280070" id="open-form-mobile">
+          <span>מילוי הצהרת הבריאות</span><span aria-hidden="true">←</span>
+        </a>
+      </div>
+
+      <div class="desktop-embed">
+      <div class="form-frame-card">
+        <!-- טופס Jotform משובץ. הסקריפט למטה משנה את גובה ה-iframe אוטומטית לפי תוכן הטופס -->
+        <iframe
+          id="JotFormIFrame-262993778280070"
+          title="הצהרת בריאות למבקש להתאמן"
+          data-src="https://form.jotform.com/262993778280070"
+          allowfullscreen="true"
+          allow="geolocation; microphone; camera"
+          scrolling="no"></iframe>
+      </div>
+      <p class="form-fallback">
+        הטופס לא נטען? <a href="https://form.jotform.com/262993778280070" target="_blank" rel="noopener noreferrer">פתיחה בחלון נפרד ↗</a>
+      </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 עדן - כשבא לך להתאמן, האימון בא אליך · <a href="./">חזרה לדף הבית</a></p>
+    </div>
+  </footer>
+
+  <!-- Jotform: הטופס המשובץ והסקריפט שמתאים את גובהו נטענים רק במסכים רחבים (בנייד יש כפתור) -->
+  <script>
+    (function () {
+      if (!window.matchMedia("(min-width: 700px)").matches) return;
+      var frame = document.getElementById("JotFormIFrame-262993778280070");
+      frame.src = frame.dataset.src;
+      var s = document.createElement("script");
+      s.src = "https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js";
+      s.onload = function () {
+        if (window.jotformEmbedHandler) {
+          window.jotformEmbedHandler("iframe[id='JotFormIFrame-262993778280070']", "https://form.jotform.com/");
+        }
+      };
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
